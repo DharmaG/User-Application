@@ -1,0 +1,17 @@
+<h2> Your Rooms </h2>
+
+ <% if (listOfRooms.lenght === 0) { %>
+  <h3> You don't have any rooms yet. </h3>
+  <a href="/rooms/new"> Add Your First Room</a>
+ <% } else { %>
+  <ul>
+  <%  listOfRooms.forEach((oneRoom) => { %>
+      <li>
+        <h3> <%= oneRoom.name %> </h3>
+        <img src="<%=oneRoom.photoUrl %>">
+
+        <p><%= oneRoom.desc %> </p>
+      </li>
+  <%  })   %>
+  </ul>
+ <% } %>
