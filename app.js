@@ -76,6 +76,9 @@ app.use(myAuthRoutes);
 const myRoomRoutes = require('./routes/room-router.js');
 app.use(myRoomRoutes);
 
+const myAdminRoutes = require('./routes/admin-router.js');
+app.use(myAdminRoutes);
+
 // ------------ routes go here --------------------
 
 // catch 404 and forward to error handler

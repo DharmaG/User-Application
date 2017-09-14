@@ -1,16 +1,31 @@
 <h2> Your Rooms </h2>
 
- <% if (listOfRooms.lenght === 0) { %>
+<% if (securityFeedback.length > 0) { %>
+  <p class="error-message"> <%= securityFeedback %> </p>
+<%   } %>
+
+ <% if (listOfRooms.length === 0) { %>
   <h3> You don't have any rooms yet. </h3>
   <a href="/rooms/new"> Add Your First Room</a>
  <% } else { %>
+
+
+
+
+   <% if (updateFeedback.length > 0) { %>
+     <p class="success-message"> <%= updateFeedback %> </p>
+  <% } %>
+
+
   <ul>
   <%  listOfRooms.forEach((oneRoom) => { %>
       <li>
         <h3> <%= oneRoom.name %> </h3>
         <img src="<%=oneRoom.photoUrl %>">
 
-        <p><%= oneRoom.desc %> </p>
+        <p> <%= oneRoom.desc %> </p>
+
+        <a href="/rooms/<%= oneRoom._id %>/edit"> Edit </a>
       </li>
   <%  })   %>
   </ul>

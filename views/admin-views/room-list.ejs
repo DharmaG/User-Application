@@ -1,0 +1,15 @@
+<h2> All Rooms </h2>
+
+<ul>
+<%  listOfRooms.forEach((oneRoom) => { %>
+    <li>
+      <h3><%= oneRoom.name %></h3>
+
+      <img src="<%= oneRoom.photoUrl %>">
+
+      <p> <%= oneRoom.desc %> </p>
+
+      <p> Owner:<%= oneRoom.owner %> </p>
+    </li>
+<%  }) %>
+</ul>

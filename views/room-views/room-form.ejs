@@ -1,12 +1,14 @@
 <h2> Add a Room </h2>
 
-<form  method="post" action="/rooms">
+
+
+<form  method="post" action="/rooms" enctype="multipart/form-data">
   <label for="room-name-input">  Room Name </label>
   <input id="room-name-input" name="roomName" type="text" placeholder="Amazing View of a Fallen Tree">
   <br>
 
-  <label for="photo-input">  Photo Url </label>
-  <input id="photo-input" name="roomPhoto" type="text" placeholder="http://example.com/photo.gif">
+  <label for="photo-input">  Upload Photo </label>
+  <input id="photo-input" name="roomPhoto" type="file">
   <br>
 
   <label for="desc-input"> Description </label>

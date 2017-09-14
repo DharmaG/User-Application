@@ -1,0 +1,15 @@
+<h2> All Users </h2>
+
+<ul>
+<%  listOfUsers.forEach((oneUser) => { %>
+    <li>
+      <h3><%= oneUser.email %></h3>
+
+      <p>
+        Resgistered On:
+        <time> <%= oneUser.createdAt %> </time>
+       </p>
+
+    </li>
+<%  }) %>
+</ul>

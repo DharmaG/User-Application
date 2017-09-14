@@ -1,5 +1,14 @@
-<h2> Welcome, logged in user! </h2>
+
+
+
 
 <%  if(roomSuccess.length > 0){ %>
     <p class="success-message"> <%= roomSuccess %> </p>
 <%  }  %>
+
+<%  if(securityFeedback.length > 0){ %>
+    <p class="error-message"> <%= securityFeedback %> </p>
+<%  }  %>
+
+
+<h2> Welcome, logged in user! </h2>
