@@ -96,6 +96,12 @@ router.get('/my-rooms', (req, res, next) => {
 }); // close GET /my-rooms
 
 router.get('/rooms/:roomId/edit', (req, res, next) => {
+    if (req.user === undefined) {
+        req.flash('securityError', 'Log in to edit your rooms.');
+        res.redirect('/login');
+        return;
+    }
+
   RoomModel.findById(
     req.params.roomId,
 
@@ -120,7 +126,19 @@ router.get('/rooms/:roomId/edit', (req, res, next) => {
   ); //close RoomModel.findById( ...)
 }); // close GET /rooms/:roomId/edit
 
-router.post('/rooms/:roomId', (req, res, next) => {
+router.post('/rooms/:roomId',
+
+  myUploader.single('roomPhoto'),
+
+  // if (req.user === undefined) {
+  //   req.flash('securityError', 'Log in to add a room.');
+  //   res.redirect('/login');
+  //   return;
+  // }
+
+(req, res, next) => {
+
+
   RoomModel.findById(
     req.params.roomId,
 
@@ -135,10 +153,17 @@ router.post('/rooms/:roomId', (req, res, next) => {
         res.redirect('/my-rooms');
         return;
       }
+      // "req.file" will be undefined if the user doesn't upload anythig
 
+      // update "photoUrl" only if the user
       roomFromDb.name = req.body.roomName;
-      roomFromDb.photoUrl = req.body.roomPhoto;
       roomFromDb.desc = req.body.roomDesc;
+
+      if (req.file) {
+        roomFromDb.photoUrl = '/uploads/' + req.file.filename;
+      }
+
+
 
       roomFromDb.save((err) => {
         if(err) {
