@@ -31,3 +31,6 @@ npm-debug.log
 
 #Ignore uploaded files
 public/uploads/
+
+# Ignore our file full of secrets
+.env
